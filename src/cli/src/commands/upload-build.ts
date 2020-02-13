@@ -76,7 +76,7 @@ export const handler = async (args: Args): Promise<void> => {
       });
 
       res.on('end', () => {
-        const response = Buffer.from(output).toJSON();
+        const response = JSON.parse(output.join(''));
         if (config.onCompare) {
           // @ts-ignore
           config.onCompare(response).then(resolve);
